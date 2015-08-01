@@ -1,0 +1,46 @@
+<% provide(:title, 'Contact Me') %>
+
+<div class="container">
+  <div class="row">
+    <div class="box">
+      <div class="col-lg-12">
+        <%= form_for @message do |f| %>
+            <% if @message.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= "#{pluralize(@message.errors.count, 'error')} prohibited this message from being sent:" %></h2>
+                  <ul>
+                    <% @message.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :subject %>
+              <%= f.text_field :subject, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :content %>
+              <%= f.text_area :content, rows: 10, class: 'form-control' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit 'Send', class: 'btn btn-block btn-lg btn-primary' %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

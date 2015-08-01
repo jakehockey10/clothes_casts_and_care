@@ -13,7 +13,4 @@ class StaticPagesController < ApplicationController
 
   def start_your_own
   end
-
-  def contact
-  end
 end

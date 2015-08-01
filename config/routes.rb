@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  resources :messages, only: [:new, :create]
+
   root 'static_pages#home'
   get 'patterns' => 'static_pages#patterns'
   get 'about'    => 'static_pages#about'
   get 'feedback' => 'static_pages#feedback'
   get 'start'    => 'static_pages#start_your_own'
-  get 'contact'  => 'static_pages#contact'
+  # get 'contact'  => 'static_pages#contact'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
