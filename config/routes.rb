@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   resources :messages, only: [:new, :create]
 
   root 'static_pages#home'
