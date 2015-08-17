@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807054151) do
+ActiveRecord::Schema.define(version: 20150810020605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,5 +33,52 @@ ActiveRecord::Schema.define(version: 20150807054151) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "meet_needs_answer"
+    t.text     "suggestions"
+    t.text     "challenges"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "pointless_feedback_messages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email_address"
+    t.string   "topic"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rapidfire_answer_groups", force: :cascade do |t|
+    t.integer  "question_group_id"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rapidfire_answer_groups", ["question_group_id"], name: "index_rapidfire_answer_groups_on_question_group_id", using: :btree
+  add_index "rapidfire_answer_groups", ["user_id", "user_type"], name: "index_rapidfire_answer_groups_on_user_id_and_user_type", using: :btree
+
+  create_table "rapidfire_question_groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rapidfire_questions", force: :cascade do |t|
+    t.integer  "question_group_id"
+    t.string   "type"
+    t.string   "question_text"
+    t.integer  "position"
+    t.text     "answer_options"
+    t.text     "validation_rules"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rapidfire_questions", ["question_group_id"], name: "index_rapidfire_questions_on_question_group_id", using: :btree
 
 end

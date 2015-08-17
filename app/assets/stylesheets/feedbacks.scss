@@ -1,0 +1,16 @@
+// Place all the styles related to the feedbacks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.showable {
+  cursor: pointer;
+}
+
+#rating_buttons, #rating_labels {
+  display: table;
+  width: 100%;
+}
+
+#rating_buttons div, #rating_labels div {
+  display: table-cell;
+  text-align: center;
+}

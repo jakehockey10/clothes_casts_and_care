@@ -1,0 +1,5 @@
+<% provide(title: 'Feedback') %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', feedbacks_path if admin_signed_in? %>

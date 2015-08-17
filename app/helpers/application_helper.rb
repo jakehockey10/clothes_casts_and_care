@@ -9,4 +9,12 @@ module ApplicationHelper
       page_title + ' | ' + base_title
     end
   end
+
+  def feedback_path_for_nav(current_admin)
+    if admin_signed_in?
+      feedbacks_path
+    else
+      new_feedback_path
+    end
+  end
 end

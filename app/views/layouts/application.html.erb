@@ -48,7 +48,7 @@
           <%= link_to 'Start Your Own', start_path %>
         </li>
         <li>
-          <%= link_to 'Feedback', feedback_path %>
+          <%= link_to 'Feedback', feedback_path_for_nav(current_admin) %>
         </li>
         <li>
           <%= link_to 'Contact', new_message_path %>
@@ -60,32 +60,18 @@
   <!-- /.container -->
 </nav>
 
+<!-- Admin menu -->
+<%= render 'shared/admin_menu' if admin_signed_in? %>
+
 <div class="container">
-  <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <a href="#" data-dismiss="alert" class="close">×</a>
-        <ul>
-          <li>
-            <%= value %>
-          </li>
-        </ul>
-      </div>
-  <% end %>
+  <%= render 'shared/flashes' %>
 
   <%= yield %>
 
   <%= debug(params) if Rails.env.development? %>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <p>TODO: (probably put something else here) Copyright &copy; Your Website 2014</p>
-      </div>
-    </div>
-  </div>
-</footer>
+<%= render 'shared/footer' %>
 
 </body>
 </html>

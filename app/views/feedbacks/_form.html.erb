@@ -1,0 +1,41 @@
+<% provide(title: 'Feedback') %>
+
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12">
+
+      <%= form_for(@feedback) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <div class="form-group">
+            <%= f.label :meet_needs_answer, Feedback.questions[:one] %><br>
+            <div id="rating_buttons">
+              <%= f.collection_radio_buttons :meet_needs_answer, (1..5).map{|n| [n, n]}, :first, :last, class: 'form-control' do |b| %>
+                  <% content_tag(:div, b.label { b.radio_button }) %>
+              <% end %>
+            </div>
+            <div id="rating_labels">
+              <div><strong>1</strong></div>
+              <div><strong>2</strong></div>
+              <div><strong>3</strong></div>
+              <div><strong>4</strong></div>
+              <div><strong>5</strong></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :suggestions, Feedback.questions[:two] %><br>
+            <%= f.text_area :suggestions, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :challenges, Feedback.questions[:three] %><br>
+            <%= f.text_area :challenges, class: 'form-control' %>
+          </div>
+          <div class="actions">
+            <%= f.submit 'Send feedback', class: 'btn btn-lg btn-primary btn-block' %>
+          </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

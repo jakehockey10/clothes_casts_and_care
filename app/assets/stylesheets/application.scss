@@ -15,3 +15,10 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#admin-menu {
+  position: fixed;
+  right: 0;
+  //top: 40%;
+  width: 8em;
+}

@@ -8,9 +8,6 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def feedback
-  end
-
   def start_your_own
   end
 end

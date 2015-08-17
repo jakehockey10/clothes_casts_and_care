@@ -24,12 +24,6 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_select 'title', 'About | Clothes, Casts, and Care'
   end
 
-  test 'should get feedback' do
-    get :feedback
-    assert_response :success
-    assert_select 'title', 'Feedback | Clothes, Casts, and Care'
-  end
-
   test 'should get start_your_own' do
     get :start_your_own
     assert_response :success

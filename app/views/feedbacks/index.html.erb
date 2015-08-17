@@ -1,0 +1,43 @@
+<% provide(title: 'Feedback received') %>
+
+<div class="row">
+  <div class="box">
+    <div class="col-lg-6">
+      <div class="panel">
+        <div class="panel-heading">
+          <h1>Average
+            <small><%= Feedback.average(:meet_needs_answer) %></small>
+          </h1>
+        </div>
+        <div class="panel-body">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <h1>Feedback given</h1>
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Meet needs answer</th>
+          <th>Suggestions</th>
+          <th>Challenges</th>
+          <!--<th colspan="3"></th>-->
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @feedbacks.each do |feedback| %>
+            <tr class="<%= feedback.row_classes %>" data-href="<%= feedback_path(feedback) %>">
+              <td><%= feedback.meet_needs_answer %></td>
+              <td><%= feedback.suggestions %></td>
+              <td><%= feedback.challenges %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
