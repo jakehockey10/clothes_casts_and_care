@@ -6,4 +6,11 @@
 #
 jake:
   email: jakehockey10@gmail.com
-#  column: value
+  name: Jake Smith
+
+bob:
+  email: bob@gmail.com
+  name: Bob
+
+noname:
+  email: noname@gmail.com

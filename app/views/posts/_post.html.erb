@@ -1,0 +1,10 @@
+<div class="media panel" style="padding: 10px;">
+  <!--<div class="media-left media-middle">-->
+    <!--<%# link_to 'image goes here', post_path(post) %>-->
+  <!--</div>-->
+  <div class="media-body">
+    <h4 class="media-heading"><%= post.title %></h4>
+    <%= truncate_html post.content, omission: '...' %>
+    <%= link_to 'more', post_path(post) %>
+  </div>
+</div>

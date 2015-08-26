@@ -8,9 +8,12 @@ class FeedbacksControllerTest < ActionController::TestCase
     @admin = admins(:jake)
   end
 
-  test 'should get index only if admin' do
+  test 'should redirect index if not admin' do
     get :index
     assert_redirected_to root_path
+  end
+
+  test 'should get index' do
     sign_in @admin
     get :index
     assert_response :success
@@ -25,9 +28,8 @@ class FeedbacksControllerTest < ActionController::TestCase
 
   test 'should create feedback' do
     assert_difference('Feedback.count') do
-      post :create, feedback: { challenges: @feedback.challenges, meet_needs_answer: @feedback.meet_needs_answer, suggestions: @feedback.suggestions }
+      post :create, feedback: { challenges: 'none', meet_needs_answer: 1, suggestions: 'none' }
     end
-
     assert_redirected_to feedback_path(assigns(:feedback))
   end
 
@@ -41,10 +43,10 @@ class FeedbacksControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  test 'should update feedback' do
-    patch :update, id: @feedback, feedback: { challenges: @feedback.challenges, meet_needs_answer: @feedback.meet_needs_answer, suggestions: @feedback.suggestions }
-    assert_redirected_to feedback_path(assigns(:feedback))
-  end
+  # test 'should update feedback' do
+  #   patch :update, id: @feedback, feedback: { challenges: @feedback.challenges, meet_needs_answer: @feedback.meet_needs_answer, suggestions: @feedback.suggestions }
+  #   assert_redirected_to feedback_path(assigns(:feedback))
+  # end
 
   # test 'should destroy feedback' do
   #   assert_no_difference('Feedback.count') do

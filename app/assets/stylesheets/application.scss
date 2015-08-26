@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootsy
  *= require_tree .
  *= require_self
  */
@@ -19,6 +20,7 @@
 #admin-menu {
   position: fixed;
   right: 0;
-  //top: 40%;
-  width: 8em;
+  top: 20%;
+  width: 13em;
+  z-index: 999999;
 }

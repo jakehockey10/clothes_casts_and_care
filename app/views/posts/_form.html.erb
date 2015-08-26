@@ -1,0 +1,9 @@
+<%= form_for(@post) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.label :content %>
+    <%= f.bootsy_area :content, style: 'width: 100%; background: none !important; background-image: none !important', rows: 15, class: 'form-control' %>
+    <%= f.submit 'Create Post', class: 'btn btn-lg btn-block btn-primary' %>
+<% end %>

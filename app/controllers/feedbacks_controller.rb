@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:index, :destroy]
+  before_action :authenticate_admin!, only: [:index, :create, :edit, :update, :destroy]
 
   # GET /feedbacks
   # GET /feedbacks.json
@@ -71,9 +71,5 @@ class FeedbacksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
       params.require(:feedback).permit(:meet_needs_answer, :suggestions, :challenges)
-    end
-
-    def authenticate_user!
-      redirect_to root_path unless admin_signed_in?
     end
 end

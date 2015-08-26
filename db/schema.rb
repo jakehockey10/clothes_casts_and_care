@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810020605) do
+ActiveRecord::Schema.define(version: 20150822042733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,25 @@ ActiveRecord::Schema.define(version: 20150810020605) do
     t.datetime "locked_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "name"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "meet_needs_answer"
@@ -50,6 +65,16 @@ ActiveRecord::Schema.define(version: 20150810020605) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "content"
+    t.integer  "admin_id"
+  end
+
+  add_index "posts", ["admin_id"], name: "index_posts_on_admin_id", using: :btree
 
   create_table "rapidfire_answer_groups", force: :cascade do |t|
     t.integer  "question_group_id"

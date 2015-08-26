@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  resources :messages, only: [:new, :create]
-  resources :feedbacks, only: [:index, :new, :create, :show]
-
   root 'static_pages#home'
   get 'patterns' => 'static_pages#patterns'
-  get 'about'    => 'static_pages#about'
-  # get 'feedback' => 'static_pages#feedback'
-  get 'start'    => 'static_pages#start_your_own'
-  # get 'contact'  => 'static_pages#contact'
+  get 'about' => 'static_pages#about'
+  get 'start' => 'static_pages#start_your_own'
+
+  devise_for :admins
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+
+  resources :messages, only: [:new, :create]
+  resources :feedbacks, only: [:index, :new, :create, :show]
+  resources :posts, only: [:show, :new, :create, :edit, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
