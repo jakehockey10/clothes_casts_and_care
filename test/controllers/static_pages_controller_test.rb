@@ -12,11 +12,11 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_select 'title', 'Clothes, Casts, and Care'
   end
 
-  test 'should get patterns' do
-    get :patterns
-    assert_response :success
-    assert_select 'title', 'Patterns | Clothes, Casts, and Care'
-  end
+  # test 'should get patterns' do
+  #   get :patterns
+  #   assert_response :success
+  #   assert_select 'title', 'Patterns | Clothes, Casts, and Care'
+  # end
 
   test 'should get about' do
     get :about

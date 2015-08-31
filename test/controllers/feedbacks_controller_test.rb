@@ -21,16 +21,32 @@ class FeedbacksControllerTest < ActionController::TestCase
     sign_out @admin
   end
 
+  test 'should redirect new if not admin' do
+    get :new
+    assert_redirected_to root_path
+  end
+
   test 'should get new' do
+    sign_in @admin
     get :new
     assert_response :success
+    sign_out @admin
+  end
+
+  test 'should redirect create if not admin'do
+    assert_no_difference('Feedback.count') do
+      post :create, feedback: { challenges: 'none', meet_needs_answer: 1, suggestions: 'none' }
+    end
+    assert_redirected_to root_path
   end
 
   test 'should create feedback' do
+    sign_in @admin
     assert_difference('Feedback.count') do
       post :create, feedback: { challenges: 'none', meet_needs_answer: 1, suggestions: 'none' }
     end
     assert_redirected_to feedback_path(assigns(:feedback))
+    sign_out @admin
   end
 
   test 'should show feedback' do

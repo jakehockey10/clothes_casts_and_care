@@ -337,6 +337,7 @@ DEPENDENCIES
   bootstrap-will_paginate
   bootsy
   byebug
+  carrierwave
   coffee-rails (~> 4.1.0)
   devise
   faker
@@ -346,6 +347,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mini_backtrace
+  mini_magick
   minitest-reporters
   pg
   puma
