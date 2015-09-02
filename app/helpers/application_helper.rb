@@ -10,7 +10,7 @@ module ApplicationHelper
     end
   end
 
-  def feedback_path_for_nav(current_admin)
+  def feedback_path_for_nav
     if admin_signed_in?
       feedbacks_path
     else
