@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:index, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
 
   def index
     @feedbacks = Feedback.all
