@@ -7,21 +7,33 @@
       <%= form_for(@feedback) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
 
-          <div class="form-group">
-            <%= f.label :meet_needs_answer, Feedback.questions[:one] %><br>
-            <div id="rating_buttons">
-              <%= f.collection_radio_buttons :meet_needs_answer, (1..5).map{|n| [n, n]}, :first, :last, class: 'form-control' do |b| %>
-                  <% content_tag(:div, b.label { b.radio_button }) %>
-              <% end %>
+          <div class="row">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+              Not well at all
             </div>
-            <div id="rating_labels">
-              <div><strong>1</strong></div>
-              <div><strong>2</strong></div>
-              <div><strong>3</strong></div>
-              <div><strong>4</strong></div>
-              <div><strong>5</strong></div>
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+              <div class="form-group">
+                <%= f.label :meet_needs_answer, Feedback.questions[:one] %><br>
+                <div id="rating_buttons">
+                  <%= f.collection_radio_buttons :meet_needs_answer, (1..5).map{|n| [n, n]}, :first, :last, class: 'form-control' do |b| %>
+                      <% content_tag(:div, b.label { b.radio_button }) %>
+                  <% end %>
+                </div>
+                <div id="rating_labels">
+                  <div><strong>1</strong></div>
+                  <div><strong>2</strong></div>
+                  <div><strong>3</strong></div>
+                  <div><strong>4</strong></div>
+                  <div><strong>5 </strong></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+              Very well
             </div>
           </div>
+
+
           <div class="form-group">
             <%= f.label :suggestions, Feedback.questions[:two] %><br>
             <%= f.text_area :suggestions, class: 'form-control' %>
