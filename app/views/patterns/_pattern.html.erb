@@ -3,10 +3,10 @@
   <!--<%# link_to 'image goes here', post_path(post) %>-->
   <!--</div>-->
   <div class="media-body">
-    <h4 class="media-heading">
+    <h4 class="media-heading" style="font-family: 'Fredericka the Great', cursive;">
       <%= link_to pattern.name, pattern_path(pattern) %>
       <%= link_to 'delete', pattern_path(pattern), confirm: 'Are you sure?', method: :delete, class: 'pull-right' if admin_signed_in? %>
     </h4>
-    <p>Uploaded by: <%= pattern.admin.name %></p>
+    <h4><small>Uploaded by: <%= pattern.admin.name %></small></h4>
   </div>
 </div>

@@ -1,8 +1,13 @@
 <% provide(:title, 'Contact Me') %>
 
-<div class="row">
+<link href='https://fonts.googleapis.com/css?family=Rock+Salt&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+<div class="row" style="font-family: 'Rock Salt', cursive;">
   <div class="box">
     <div class="col-lg-offset-2 col-lg-8">
+      <h1 class="intro-text text-center" style="line-height: 50px;">
+        Want to contact me?  Send me a message with this form, and I'll get back to you soon!
+      </h1>
       <%= form_for @message do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
 
@@ -27,7 +32,9 @@
           </div>
 
           <div class="actions">
-            <%= f.submit 'Send', class: 'btn btn-block btn-lg btn-primary' %>
+            <%= f.button fa_icon('paper-plane-o', text: 'Send'),
+                         class: 'btn btn-block btn-lg btn-primary',
+                         data: { disable_with: "#{fa_icon 'spinner pulse' } Sending..."}%>
           </div>
       <% end %>
     </div>

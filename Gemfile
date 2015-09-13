@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'bootsy'
 gem 'truncate_html'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
