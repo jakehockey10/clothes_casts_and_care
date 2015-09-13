@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
-  before_action :set_feedback, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
+  before_action :set_feedback, only: [:show, :edit]
+  before_action :authenticate_admin!, only: [:index, :edit]
 
   def index
     @feedbacks = Feedback.all
@@ -18,9 +18,11 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
+        NewFeedbackMailer.new_feedback.deliver_now
         format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
+        flash[:danger] = 'Oops, something went wrong!  :('
         format.html { render :new }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end

@@ -1,10 +1,9 @@
-class MessageMailer < ApplicationMailer
+class NewFeedbackMailer < ApplicationMailer
 
   default to: 'clothescastscare@gmail.com'
 
-  def message_me(msg)
-    @msg = msg
+  def new_feedback
     # mail from: @msg.email, subject: @msg.subject, body: @msg.content
-    mail from: @msg.email, subject: @msg.subject
+    mail subject: 'Feedback received @ SpicaCastCare.com!'
   end
 end
